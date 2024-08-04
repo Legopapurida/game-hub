@@ -18,7 +18,7 @@ const generateSkeletonItems = (count: number = 15) => {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = generateSkeletonItems();
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text>{error.message}</Text>;
   return (
     <SimpleGrid
       padding={"10px"}
@@ -31,7 +31,7 @@ const GameGrid = ({ gameQuery }: Props) => {
             <GameCardSkeleton key={skeleton} />
           </GameCardContainer>
         ))}
-      {data.map((game) => (
+      {data?.results.map((game) => (
         <GameCardContainer key={game.id}>
           <GameCard key={game.id} game={game} />
         </GameCardContainer>

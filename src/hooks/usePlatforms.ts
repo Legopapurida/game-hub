@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import platforms from "../data/platforms";
-import { FetchResponse } from "./useData";
+import { FetchResponse } from "../services/api-client";
 
-interface Platform {
+export interface Platform {
   id: number;
   name: string;
   slug: string;
