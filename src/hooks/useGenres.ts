@@ -14,6 +14,17 @@ const useGenres = () =>
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24h
-    initialData: { count: genres.length, results: genres },
+    initialData: () => {
+      return {
+        count: genres.length,
+        results: genres.map((genre) => {
+          return {
+            name: genre.name,
+            id: genre.id,
+            image_background: genre.image_background,
+          };
+        }),
+      };
+    },
   });
 export default useGenres;
